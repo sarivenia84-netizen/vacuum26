@@ -1,28 +1,22 @@
-"""The Robot Vacuum's Funniest Excuse — makefun deterministic entry.
+"""Generate the robot vacuum's funniest excuse for make.fun competition.
 
-Creates precisely one humor line written to the output file with no trailing
-newline. The joke: a dog's "charging dock" mischief outsmarts the vacuum's
-expected behavior.
+This module writes a humorous one-line entry about a robot vacuum
+taking the blame for a dog's mischief regarding the charging dock.
+The entry is written to /output/entry.txt for submission.
+
+The joke: the robot vacuum deliberately misses a spot on the floor,
+blaming the dog who sleeps there, while the narrator has observed
+the dog's mischievous behavior toward the charging dock.
 """
 
 import os
 
+output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+os.makedirs(output_dir, exist_ok=True)
 
-def main():
-    # Respect MAKEFUN_OUTPUT_DIR if set, otherwise use default path
-    output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(output_dir, exist_ok=True)
+entry_path = os.path.join(output_dir, "entry.txt")
 
-    line = "I missed that spot on purpose. The dog sleeps there, and I have seen what he does to the charging dock."
+ROBOT_VACUUM_EXCUSE = "I missed that spot on purpose. The dog sleeps there, and I have seen what he does to the charging dock."
 
-    # Write exactly one line, no trailing newline
-    entry_path = os.path.join(output_dir, "entry.txt")
-    with open(entry_path, "w") as f:
-        f.write(line)  # no newline — exact single-line deliverable
-
-    # The entry string is intentionally fixed; any change breaks the
-    # deterministic checksum the MakeFun platform expects
-
-
-if __name__ == "__main__":
-    main()
+with open(entry_path, "w") as f:
+    f.write(ROBOT_VACUUM_EXCUSE)
