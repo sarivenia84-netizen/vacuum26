@@ -1,7 +1,7 @@
-"""The Robot Vacuum's Funniest Excuse — deterministic MakeFun entry.
+"""The Robot Vacuum's Funniest Excuse — makefun deterministic entry.
 
-Writes exactly one line of humor to the output file, no trailing newline.
-The punchline: a dog's "charging dock" mischief beats the vacuum's
+Creates precisely one humor line written to the output file with no trailing
+newline. The joke: a dog's "charging dock" mischief outsmarts the vacuum's
 expected behavior.
 """
 
@@ -19,6 +19,9 @@ def main():
     entry_path = os.path.join(output_dir, "entry.txt")
     with open(entry_path, "w") as f:
         f.write(line)  # no newline — exact single-line deliverable
+
+    # The entry string is intentionally fixed; any change breaks the
+    # deterministic checksum the MakeFun platform expects
 
 
 if __name__ == "__main__":
